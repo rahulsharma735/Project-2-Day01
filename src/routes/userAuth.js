@@ -9,7 +9,7 @@ authRouter.post('/register',register); // register => CONTROLER
 authRouter.post('/login',login);
 authRouter.post('/logout',userMiddleware,logout);
 authRouter.post('/admin/register',adminMiddleware, adminRegister);
-// authRouter.post('getProfile', getProfile);
+// authRouter.get('getProfile', getProfile);
 
 // login
 // logout

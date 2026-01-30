@@ -12,27 +12,27 @@ const problemSchema = new Schema({
     },
     difficulty:{
         type: String,
-        enum:['easy','mediun','hard'],
+        enum:['easy','medium','hard'],
         required: true
     },
     tags:{
         type:String,
-        enum:['array','string','LinkedList','graph','dp'],
+        enum:['array','string','linkedList','graph','dp'],
         required:true
     },
     visibleTestCases:[
         {
             input:{
                 type:String,
-                required: true
+                required:true
             },
             output:{
                 type:String,
-                required: true
+                required:true
             },
             explanation:{
                 type:String,
-                required: true
+                required:true
             }
         }
     ],
@@ -40,11 +40,11 @@ const problemSchema = new Schema({
         {
             input:{
                 type:String,
-                required: true
+                required:true
             },
             output:{
                 type:String,
-                required: true
+                required:true
             }
         }
     ],
@@ -53,13 +53,26 @@ const problemSchema = new Schema({
         {
             language:{
                 type: String,
-                required: true
+                required:true,
             },
             initialCode:{
-                type: String,
-                required: true
+                type:String,
+                required:true
             }
         }
+    ],
+
+    referenceSolution:[
+        {
+        language:{
+                type: String,
+                required: true,
+            },
+            completeCode:{
+                type: String,
+                required: true,
+            }
+       }
     ],
 
     problemCreater:{
@@ -74,3 +87,4 @@ const problemSchema = new Schema({
 const Problem = mongoose.model("problem", problemSchema);
 
 module.exports = Problem;
+
