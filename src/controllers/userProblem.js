@@ -54,7 +54,6 @@ const createProblem = async (req,res)=>{
     }
 }
 
-
 const updateProblem = async (req,res)=>{
   const {id} = req.params;
 
@@ -141,16 +140,40 @@ const getProblemById = async (req, res)=>{
     const getProblem = await Problem.findById(id);
 
     if(!getProblem){
-      res.status().send("Problem is missing");
+      res.status(404).send("Problem is missing");
     }
 
+      res.send(200).send(getProblem);
     
+  }
+  catch(err){
+    res.status(500).send("Error: "+err.message)
   }
 }
 
+const getAllProblem = async()=>{
 
+    try{
 
-module.exports = {createProblem,updateProblem,deleteProblem,getProblemById};
+      const getProblem = await Problem.find({});
+
+      if(getProblem.length == 0){
+        res.status(404).send("Problem is missing");
+      }
+
+        res.send(200).send(getProblem);
+      
+    }
+    catch(err){
+      res.status(500).send("Error: "+err.message)
+    }
+}
+
+const solvedAllProblembyUser = async()=>{
+  
+}
+
+module.exports = {createProblem,updateProblem,deleteProblem,getProblemById,getAllProblem,solvedAllProblembyUser};
 
 /*
 const  submissions= [
